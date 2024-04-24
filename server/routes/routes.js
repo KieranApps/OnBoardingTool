@@ -1,0 +1,40 @@
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+
+import { userRouter } from './users.routes.js';
+
+
+export const router = express.Router({
+    mergeParams: true
+});
+
+router.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+const whitelist = [];
+if(process.env.NODE_ENV === 'development'){
+    whitelist.push(process.env.FRONT_END);
+}else if(process.env.NODE_ENV === 'production'){
+    whitelist.push(process.env.FRONT_END);
+}
+const corsOptions = {
+    origin: (origin, callback) => {
+        if(whitelist.indexOf(origin) !== -1 || !origin){
+            callback(null, true);
+        }else{
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    optionsSuccessStatus: 200,
+    credentials: true
+};
+
+router.use(cors(corsOptions));
+
+router.use(bodyParser.json());
+
+// Routes
+
+router.use('/api/users', userRouter)
