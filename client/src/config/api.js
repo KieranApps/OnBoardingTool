@@ -1,3 +1,3 @@
-const HOST = 'http://localhost:6666/api';
+const HOST = 'http://localhost:5000/api';
 
 export default HOST;

@@ -2,6 +2,9 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
+import { asyncRequest } from '../utils/util.js';
+
+import { getConfig } from '../controllers/config.controller.js'
 import { userRouter } from './users.routes.js';
 
 
@@ -36,5 +39,5 @@ router.use(cors(corsOptions));
 router.use(bodyParser.json());
 
 // Routes
-
+router.use('/api/config', asyncRequest(getConfig))
 router.use('/api/users', userRouter)

@@ -14,7 +14,6 @@ const Layout = () => {
         <Routes>
             <Route
               exact path={ROUTES.HOME}
-              // render={props => (<router.home.component {...props}  />)}
               element={<router.home.component/>}
               history={ROUTES.HOME}
             />
