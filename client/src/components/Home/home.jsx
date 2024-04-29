@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getConfig } from './homeFunctions';
 
 import { Button, Grid } from '@mui/material';
@@ -6,8 +6,14 @@ import { Button, Grid } from '@mui/material';
 const Home = (props) => {
     console.log(props)
     const [config, setConfig] = useState(null)
-    getConfig();
 
+    useEffect(() => {
+      const getConfigHook = async () => {
+        const config = await getConfig();
+        setConfig(config);
+      }
+      getConfigHook();
+    }, []);
     return (
       <Grid
         container

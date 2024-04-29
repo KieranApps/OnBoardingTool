@@ -6,7 +6,7 @@ import {
 
 import ROUTES from '../config/routes';
 import router from '../config/router';
-import host from '../config/api';
+// import host from '../config/api';
 
 const Layout = () => {
   return (
