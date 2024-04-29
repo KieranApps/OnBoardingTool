@@ -1,4 +1,7 @@
 
 export async function login(req, res) {
-    return 'In the function';
+    // Remeber to check/sanitize input so that SQL injection cant happen
+    // Knex might itself, but double checking cant hurt
+
+    
 }
