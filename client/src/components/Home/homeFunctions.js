@@ -5,9 +5,9 @@ export async function getConfig()
 {
     try {
         const config = await axios.get(`${HOST}/config`);
-        console.log(config.data);
         return config.data;
     } catch (error) {
-        console.log(error.message);
+        // console.log(error.message);
+        return {error: true}
     }
 }
