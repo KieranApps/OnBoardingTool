@@ -1,5 +1,7 @@
 import bcrypt from 'bcrypt';
 
+import { hashPassword } from '../server/utils/util.js';
+
 export async function seed(knex) {
     try {
         await knex.transaction(async (trx) => {
@@ -75,13 +77,3 @@ async function addUser(trx) {
         role_id: 3
     }]);
 }
-
-const hashPassword = async (raw) => {
-    const saltRounds = 12;
-    const hash = await bcrypt.hash(raw, saltRounds).then((hash) => {
-        return hash;
-    }).catch((err) =>{
-        return false;
-    });
-    return hash;
-};
