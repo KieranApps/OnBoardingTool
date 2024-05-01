@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getConfig } from './homeFunctions';
 
 import { Grid, Snackbar, Alert } from '@mui/material';
 
 const Home = (props) => {
-    const [config, setConfig] = useState(null)
+    const nav = useNavigate();
+
+    const [config, setConfig] = useState(null);
     
     const [configErrorToastOpen, setConfigErrorToastOpen] = useState(false);
 
@@ -23,7 +26,9 @@ const Home = (props) => {
           handleErrorToastOpen()
         }
         setConfig(config);
-        // If not logged in redirect to login page
+        if (!config.loggedin) {
+          nav('/login');
+        }
       }
       getConfigHook();
     }, []);
