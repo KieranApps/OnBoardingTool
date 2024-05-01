@@ -6,5 +6,7 @@ export async function getConfig(req, res) {
             loggedin: false
         });
     }
+    // Check session cookie is not expired
+    
     return {};
 }
