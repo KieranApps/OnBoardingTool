@@ -18,6 +18,13 @@ const Layout = () => {
               history={ROUTES.HOME}
             />
         </Routes>
+        <Routes>
+            <Route
+              exact path={ROUTES.LOGIN}
+              element={<router.login.component/>}
+              history={ROUTES.LOGIN}
+            />
+        </Routes>
     </Router>
   )
 };

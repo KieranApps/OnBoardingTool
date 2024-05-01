@@ -1,3 +1,4 @@
+import moment from "moment";
 
 export async function getConfig(req, res) {
     // Get session for cookie (if exists)
@@ -7,6 +8,6 @@ export async function getConfig(req, res) {
         });
     }
     // Check session cookie is not expired
-    
+
     return {};
 }

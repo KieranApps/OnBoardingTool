@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
-import { getConfig, login } from './homeFunctions';
+import { getConfig } from './homeFunctions';
 
-import { Button, Grid, Snackbar, Alert, TextField } from '@mui/material';
+import { Grid, Snackbar, Alert } from '@mui/material';
 
 const Home = (props) => {
     const [config, setConfig] = useState(null)
     
     const [configErrorToastOpen, setConfigErrorToastOpen] = useState(false);
-    const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState(null);
-    
+
     function handleErrorToastClose() {
       setConfigErrorToastOpen(false);
     }
@@ -25,6 +23,7 @@ const Home = (props) => {
           handleErrorToastOpen()
         }
         setConfig(config);
+        // If not logged in redirect to login page
       }
       getConfigHook();
     }, []);
@@ -50,23 +49,6 @@ const Home = (props) => {
       );
     }
 
-    function onChangeEmail(e) {
-      setEmail(e.target.value)
-    }
-
-    function onChangePassword(e) {
-      setPassword(e.target.value)
-    }
-
-    async function processLogin() {
-      if (!email && !password) {
-        return;
-      }
-
-      const loggedIn = await login(email, password);
-
-    }
-
     if (config) {
       return (
         <Grid
@@ -78,18 +60,6 @@ const Home = (props) => {
             sx={{ minHeight: '100vh' }}
           >
           {showConfigErrorToast()}
-          <Grid m={1} item xs={3}>
-            <TextField onChange={onChangeEmail} variant="filled" label="Email"/>
-          </Grid>
-          <Grid m={1} item xs={3}>
-            <TextField onChange={onChangePassword} variant="filled" label="Password" type="password"/>
-          </Grid>
-          <Grid m={1} item xs={3}>
-            <Button onClick={processLogin} variant="contained">Login</Button>
-          </Grid>
-          <Grid m={1} item xs={3}>
-            <Button color="error" variant="contained">Forgotten Password?</Button>
-          </Grid>
         </Grid> 
       );
     }
