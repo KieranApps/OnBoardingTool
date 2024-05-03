@@ -5,6 +5,9 @@ import { login } from './loginFunctions';
 import { Button, Grid, Snackbar, Alert, TextField } from '@mui/material';
 
 const Login = (props) => {
+
+  console.log(props)
+
     const [configErrorToastOpen, setConfigErrorToastOpen] = useState(false);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
@@ -55,7 +58,6 @@ const Login = (props) => {
       }
 
       const loggedIn = await login(email, password);
-      console.log(loggedIn);
       if (loggedIn) {
         setLoggedIn(true);
         // Save info to props
