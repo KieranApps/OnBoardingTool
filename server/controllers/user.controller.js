@@ -45,6 +45,7 @@ export async function login(req, res) {
     };
     res.json({
         loggedin: true,
+        session_id: sessionID,
         user: {
             firstname: user.firstname,
             lastname: user.lastname,

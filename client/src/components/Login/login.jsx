@@ -1,17 +1,15 @@
 import {  useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { login } from './loginFunctions';
 
 import { Button, Grid, Snackbar, Alert, TextField } from '@mui/material';
 
 const Login = (props) => {
-
-  console.log(props)
+    const nav = useNavigate();
 
     const [configErrorToastOpen, setConfigErrorToastOpen] = useState(false);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
-    const [loggedin, setLoggedIn] = useState(false);
     const [toastText, setToastText] = useState(null);
 
     function handleErrorToastClose() {
@@ -54,15 +52,15 @@ const Login = (props) => {
 
     async function processLogin() {
       if (!email && !password) {
-        return; // Show errors
+        return; // TODO: Show errors
       }
 
       const loggedIn = await login(email, password);
       if (loggedIn) {
-        setLoggedIn(true);
-        // Save info to props
-        // Redirect to dash board? or some other page
-        // Also perhaps just rename this to log in since it will likely be all it does
+        props.setLoggedin(true);
+        props.setUser(loggedIn.user);
+        localStorage.setItem('session_id', loggedIn.session_id);
+        nav('/');
       } else {
         handleErrorToastOpen('We couldn\'t log you in! Please try again!');
       }
@@ -90,9 +88,6 @@ const Login = (props) => {
         <Grid m={1} item xs={3}>
             <Button color="error" variant="contained">Forgotten Password?</Button>
         </Grid>
-        {loggedin && (
-            <>Go back home</>
-        )}
     </Grid> 
     );
 }

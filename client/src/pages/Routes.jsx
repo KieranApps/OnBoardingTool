@@ -13,17 +13,15 @@ const Layout = (props) => {
     <Router>
         <Routes>
             <Route
-              {...props}
               exact path={ROUTES.HOME}
-              element={<router.home.component {...props}/>}
+              element={<router.home.component loggedin={props.loggedin} loadedConfig={props.loadedConfig} />}
               history={ROUTES.HOME}
             />
         </Routes>
         <Routes>
             <Route
-              {...props}
               exact path={ROUTES.LOGIN}
-              element={<router.login.component {...props}/>}
+              element={<router.login.component loggedin={props.loggedin} loadedConfig={props.loadedConfig} />}
               history={ROUTES.LOGIN}
             />
         </Routes>
