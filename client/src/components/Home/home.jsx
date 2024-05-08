@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { PageWrapper } from '../Pagewrapper/pagewrapper.jsx';
 // Get config if kept should be run at App.js level
 
 import { Grid, Snackbar, Alert } from '@mui/material';
@@ -15,16 +16,20 @@ const Home = (props) => {
     })
 
     return (
-      <Grid
-          container
-          spacing={0}
-          direction="column"
-          alignItems="center"
-          justifyContent="center"
-          sx={{ minHeight: '100vh' }}
-        >
-          Welcome to the home page
-      </Grid> 
+      <>
+        <PageWrapper/>
+          <Grid
+            container
+            spacing={0}
+            direction="column"
+            alignItems="center"
+            justifyContent="center"
+            sx={{ minHeight: '100vh' }}
+          >
+            Welcome to the home page
+          </Grid> 
+        
+      </>
     );
 
     return <></>;
