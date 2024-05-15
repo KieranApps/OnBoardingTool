@@ -15,6 +15,18 @@ const Home = (props) => {
       }
     })
 
+    function gotoProjects() {
+      nav('/projects');
+    }
+
+    function gotoObjectives() {
+      nav('/objectives');
+    }
+
+    function gotoHR() {
+      nav('/hr');
+    }
+
     return (
       <>
         <PageWrapper/>
