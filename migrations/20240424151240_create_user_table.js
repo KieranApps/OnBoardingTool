@@ -8,6 +8,7 @@ export function up(knex) {
     table.string('password').notNullable();
     table.string('reset_id').nullable();
     table.datetime('reset_expiry').nullable();
+    table.integer('manager_id').unsigned().references('id').inTable('users');
     table.integer('role_id').unsigned().references('id').inTable('roles').defaultTo(1);
     table.timestamps(false,  true);
   });

@@ -2,7 +2,7 @@ import { startTransition, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, Container, Box, Button } from '@mui/material';
 
-const pages = ['Objectives', 'Projects', 'HR'];
+const pages = ['Home', 'Objectives', 'Projects', 'HR'];
 
 export function PageWrapper() {
     const nav = useNavigate();

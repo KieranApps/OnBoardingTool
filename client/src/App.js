@@ -12,7 +12,15 @@ function App() {
   useEffect(() => {
     const getConfigHook = async () => {
       const sessionId = localStorage.getItem('session_id');
+      // TODO Fix for when server errors getting config, just force log out for safety
       const config = await getConfig(sessionId);
+      if (config.error) {
+        localStorage.removeItem('session_id');
+        setLoggedin(false);
+        setLoadedConfig(true);
+        setUser(null);
+      }
+
       if (config.loggedin) {
         setLoggedin(true);
         setLoadedConfig(true);

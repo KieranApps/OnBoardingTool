@@ -3,7 +3,7 @@ import { getSessionById } from '../services/session.service.js';
 import { getUserById } from '../services/user.service.js';
 
 export async function getConfig(req, res) {
-
+    console.log('asdasd')
     if (!req.query.session_id) {
         return res.json({
             loggedin: false
@@ -12,6 +12,11 @@ export async function getConfig(req, res) {
     const session_id = req.query.session_id;
     // Check session cookie is not expired
     const session = await getSessionById(session_id);
+    if (!session) {
+        return res.json({
+            loggedin: false
+        });
+    }
     // If exists (and there is no req.session) i.e., if the server reset then save the session (if valid)
     if (session.expiry < moment().subtract(30, 'days')) {
         // Expired

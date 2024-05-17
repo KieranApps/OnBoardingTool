@@ -26,3 +26,6 @@
 - Manager and HR
 
 ## Add not found page
+
+# Bug Fixes
+
