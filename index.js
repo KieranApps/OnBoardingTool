@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
-import cookieSession from 'cookie-session';
+import session from 'express-session';
 import bodyParser from 'body-parser';
 import http from 'http';
 import { router } from './server/routes/routes.js';
@@ -11,11 +11,10 @@ const app = express();
 
 app.use(express.static("static"));
 
-app.use(cookieSession({
-    name: 'session',
-    keys: ['first'],
-
-    maxAge: 30 * 24 * 60 * 60 * 1000 // 1 month
+app.use(session({ 
+    secret: 'catcar',
+    resave: false,
+    saveUninitialized: false
 }));
 
 app.use(bodyParser.json());

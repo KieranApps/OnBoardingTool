@@ -3,7 +3,6 @@ import { getSessionById } from '../services/session.service.js';
 import { getUserById } from '../services/user.service.js';
 
 export async function getConfig(req, res) {
-    console.log('asdasd')
     if (!req.query.session_id) {
         return res.json({
             loggedin: false
@@ -27,7 +26,11 @@ export async function getConfig(req, res) {
 
     // if session is valid, get user
     const user = await getUserById(session.user_id);
-
+    req.session.details = {
+        user_id: user.id,
+        session_id: session_id, 
+        expiry: session.expiry
+    };
     return res.json({
         loggedin: true,
         session_id: session_id,

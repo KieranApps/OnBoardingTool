@@ -38,7 +38,7 @@ export async function login(req, res) {
     } else {
         session = await createUserSession(user.id, sessionID, expiry);
     }
-    req.session = {
+    req.session.details = {
         userId: user.id,
         id: sessionID, 
         expiry
