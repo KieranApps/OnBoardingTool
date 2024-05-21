@@ -1,6 +1,7 @@
 # Ideas
 ## Create chat function
 - Allow between employee and manager and HR
+- Websockets
 
 ## Feedback portal
 - For end of probation period
@@ -12,6 +13,14 @@
 ## Create relevant tables
 - Objecitves
 - Projects
+
+## Add middleware to check Auth and permissions
+- Can either middleware it or just add it into the controllers
+
+## Create controller and services for projects and objectives
+- Add, edit
+    - Check that only HR can add edit some of them...
+    
 
 ## Create front end pages for viewing objectives and projects
 

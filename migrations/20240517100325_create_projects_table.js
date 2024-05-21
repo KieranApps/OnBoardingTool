@@ -6,7 +6,8 @@ export function up (knex) {
       table.text('description');
       table.date('startDate');
       table.date('endDate');
-      
+      // Likely a lot more to be needed here/in sub-tables
+      // I.e., pictures, logos, etc....
     });
   };
   

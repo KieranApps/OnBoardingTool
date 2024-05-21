@@ -6,7 +6,8 @@ import { asyncRequest } from '../utils/util.js';
 
 import { getConfig } from '../controllers/config.controller.js'
 import { userRouter } from './users.routes.js';
-
+import { projectsRouter } from './projects.routes.js';
+import { objectivesRouter } from './objectives.routes.js';
 
 export const router = express.Router({
     mergeParams: true
@@ -39,5 +40,7 @@ router.use(cors(corsOptions));
 router.use(bodyParser.json());
 
 // Routes
-router.use('/api/config', asyncRequest(getConfig))
-router.use('/api/users', userRouter)
+router.use('/api/config', asyncRequest(getConfig));
+router.use('/api/users', userRouter);
+router.use('/api/projects', projectsRouter);
+router.use('/api/objectives', objectivesRouter);
