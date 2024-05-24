@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { PageWrapper } from '../Pagewrapper/pagewrapper.jsx';
 // Get config if kept should be run at App.js level
 
-import { Grid,} from '@mui/material';
+import { Button, Grid,} from '@mui/material';
 
 const Projects = (props) => {
     const nav = useNavigate();
@@ -14,6 +14,14 @@ const Projects = (props) => {
         nav('/login');
       }
     })
+
+    function showCreateButton() {
+      console.log(props)
+      if (true) {
+
+      }
+      return (<Button>Create Project</Button>);
+    }
 
     return (
       <>
@@ -26,7 +34,7 @@ const Projects = (props) => {
           justifyContent="center"
           sx={{ minHeight: '100vh' }}
         >
-          Welcome to the Projects page
+          {showCreateButton()}
         </Grid> 
       </>
     );

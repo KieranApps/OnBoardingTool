@@ -25,6 +25,10 @@ function App() {
         setLoggedin(true);
         setLoadedConfig(true);
         setUser(config.user);
+      } else {
+        localStorage.removeItem('session_id');
+        setLoggedin(false);
+        setLoadedConfig(true);
       }
     }
     getConfigHook();
