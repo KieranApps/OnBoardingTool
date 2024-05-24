@@ -1,3 +1,4 @@
+import myknex from '../../knexConfig.js';
 
 export async function getProjects(id, user) {
     if (id && user) {
@@ -16,4 +17,12 @@ export async function getProjects(id, user) {
     if (!id && user) {
         // get all assigned to user
     }
+}
+
+export async function createProject(details, trx) {
+    return trx('projects').insert(details);
+}
+
+export async function assignManagers(managers, trx) {
+    return trx('project_managers').insert(managers);
 }
