@@ -28,7 +28,7 @@ const Layout = (props) => {
 
             <Route
               exact path={ROUTES.PROJECTS}
-              element={<router.projects.component loggedin={props.loggedin} loadedConfig={props.loadedConfig} />}
+              element={<router.projects.component props={props} />}
               history={ROUTES.PROJECTS}
             />
 

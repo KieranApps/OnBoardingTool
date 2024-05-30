@@ -19,7 +19,7 @@ const NotFound = (props) => {
           justifyContent="center"
           sx={{ minHeight: '100vh' }}
         >
-          Uh Oh! Something couldnt be found...
+          Uh Oh! Something couldn't be found...
         </Grid> 
       </>
     );
