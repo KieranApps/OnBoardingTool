@@ -15,3 +15,13 @@ export async function getConfig(sessionId)
         return {error: true}
     }
 }
+
+export async function getAllManagers() {
+    try {
+        const managers = await axios.get(`${HOST}/users/managers/getAll`);
+        
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
