@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import Joi from 'joi';
 import moment from 'moment';
 
-import { getUser } from '../services/user.service.js';
+import { getUser, getManagers } from '../services/user.service.js';
 import { createUserSession } from '../services/session.service.js'; 
 import { validate, createUUID } from '../utils/util.js';
 import { NotFound } from '../utils/exceptions.js';
@@ -46,6 +46,12 @@ export async function login(req, res) {
     });
 }
 
-export async function getAllManagers() {
+export async function getAllManagers(req, res) {
+    const managers = await getManagers();
 
+    if (!managers || managers.length === 0) {
+        res.json('No managers found');
+    }
+    console.log(managers);
+    res.json(managers);
 }

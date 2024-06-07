@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Box, Button, Modal, TextField, Snackbar, Alert } from '@mui/material';
+import { Box, Button, Modal, TextField, Snackbar, Alert, Select, MenuItem } from '@mui/material';
 import dayjs from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -30,11 +30,14 @@ export function ShowCreateProjectModal (props) {
     const [configErrorToastOpen, setConfigErrorToastOpen] = useState(false);
     const [managers, setManagers] = useState(null)
 
-    useEffect(async () => {
-        const managers = await getAllManagers();
-
+    useEffect(() => {
+        getManagers();
     });
     
+    async function getManagers(){
+        const managers = await getAllManagers();
+    }
+
     function handleErrorToastClose() {
       setConfigErrorToastOpen(false);
     }
@@ -112,6 +115,10 @@ export function ShowCreateProjectModal (props) {
         }
     }
 
+    function displayAllManagers(managers) {
+
+    }
+
     return (<Modal open={props.open} onClose={props.handleClose} aria-labelledby="modal-modal-title"
     aria-describedby="modal-modal-description">
         <Box sx={modalStyle}>
@@ -131,7 +138,19 @@ export function ShowCreateProjectModal (props) {
                         onChange={onChangeEndDate}
                     />
                 </LocalizationProvider>
-                <TextField>Mangers</TextField>
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={10}
+                    label="Age"
+                    // onChange={handleChange}
+                >
+                    {/* displayAllManagers() <- return an array of MenuItems each with the name of each manager, and value of ID
+                    Then figure out how to select multiple */}
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                </Select>
           </Box>
           <Box>
             <TextField onChange={onChangeDescription} variant="filled" label="Decription" multiline rows={5}/>

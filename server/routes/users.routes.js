@@ -9,5 +9,5 @@ export const userRouter = express.Router({
 });
 
 userRouter.post('/login',  asyncRequest(login));
-userRouter.get('/managers/getAll', isLoggedIn, asyncRequest(getAllManagers));
+userRouter.get('/managers/all', isLoggedIn, asyncRequest(getAllManagers));
 
