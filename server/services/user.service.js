@@ -19,7 +19,7 @@ export async function getUserById(id) {
 
 export async function getManagers() {
     try {
-        return await myknex('Users').select('firstname', 'lastname', 'email', 'role_id').where('role_id', '=', ROLES.HR);
+        return await myknex('Users').select('firstname', 'lastname', 'email', 'role_id').where('role_id', '=', ROLES.MANAGER);
     } catch (error) {
         return error;
     }

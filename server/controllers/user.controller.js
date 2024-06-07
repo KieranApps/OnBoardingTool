@@ -52,6 +52,5 @@ export async function getAllManagers(req, res) {
     if (!managers || managers.length === 0) {
         res.json('No managers found');
     }
-    console.log(managers);
     res.json(managers);
 }
