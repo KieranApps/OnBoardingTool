@@ -5,7 +5,7 @@ export function up(knex) {
     table.string('firstname', 255).notNullable();
     table.string('lastname', 255).notNullable();
     table.string('email', 255).notNullable();
-    table.string('password').notNullable();
+    table.string('password'); // Must be nullable as a user needs to be created before they themselves can create their password
     table.string('reset_id').nullable();
     table.datetime('reset_expiry').nullable();
     table.integer('manager_id').unsigned().references('id').inTable('users');

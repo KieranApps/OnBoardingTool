@@ -1,6 +1,8 @@
 import bcrypt from 'bcrypt';
 import crypto from 'node:crypto';
 
+import { InvalidParameters } from './exceptions.js';
+
 export function asyncRequest(handler) {
     return async function(req, res, next){
         try {
