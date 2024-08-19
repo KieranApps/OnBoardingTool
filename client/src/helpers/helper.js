@@ -1,6 +1,8 @@
 import axios from 'axios';
 import HOST from '../config/api';
 
+import Cookies from 'universal-cookie';
+
 export async function getConfig(sessionId)
 {
     try {
@@ -18,8 +20,10 @@ export async function getConfig(sessionId)
 
 export async function getAllManagers() {
     try {
-        const managers = await axios.get(`${HOST}/users/managers/getAll`);
-        
+        // const cookies = new Cookies();
+        // console.log(cookies.get('session'))
+        const managers = await axios.get(`${HOST}/users/managers/all`);
+        console.log(managers)
     } catch (error) {
         console.log(error);
         return false;

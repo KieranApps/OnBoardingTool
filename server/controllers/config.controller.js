@@ -33,7 +33,11 @@ export async function getConfig(req, res) {
     };
     return res.json({
         loggedin: true,
-        session_id: session_id,
+        session: {
+            user_id: user.id,
+            session_id: session_id, 
+            expiry: session.expiry
+        },
         user: {
             firstname: user.firstname,
             lastname: user.lastname,

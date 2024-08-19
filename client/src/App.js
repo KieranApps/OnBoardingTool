@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Routes from './pages/Routes'
+import Cookies from 'universal-cookie';
 
 import { getConfig } from './helpers/helper.js';
 
 function App() {
+  const cookies = new Cookies();
 
   const [loggedin, setLoggedin] = useState(false);
   const [user, setUser] = useState(null);
@@ -25,6 +27,7 @@ function App() {
         setLoggedin(true);
         setLoadedConfig(true);
         setUser(config.user);
+        cookies.set('session', config.session, { path: '/' });
       } else {
         localStorage.removeItem('session_id');
         setLoggedin(false);

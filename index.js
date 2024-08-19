@@ -14,7 +14,8 @@ app.use(express.static("static"));
 app.use(session({ 
     secret: 'catcar',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: { secure: false }
 }));
 
 app.use(bodyParser.json());

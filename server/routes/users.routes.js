@@ -10,5 +10,5 @@ export const userRouter = express.Router({
 
 userRouter.post('/login',  asyncRequest(login));
 userRouter.post('/add', canAddNewUser, asyncRequest(addUser))
-userRouter.get('/managers/all', isLoggedIn, asyncRequest(getAllManagers));
+userRouter.get('/managers/all'/*, isLoggedIn*/, asyncRequest(getAllManagers));
 
